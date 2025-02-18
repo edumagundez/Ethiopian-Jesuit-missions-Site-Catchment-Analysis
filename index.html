@@ -1,6 +1,7 @@
-<!DOCTYPE html>         
+<!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -18,81 +19,158 @@
             height: 100%;
             overflow: hidden;
         }
+
+        
     </style>
-  </head>
 
-  <body>
-      <!-- Contenedor principal del mapa -->
-      <div id="mapjs" class="m-container"></div>
-      <!-- Ficheros javascript de la API -->
-      <script type="text/javascript" src="https://componentes.cnig.es/api-core/vendor/browser-polyfill.js"></script>
-      <script type="text/javascript" src="https://componentes.cnig.es/api-core/js/apiign.ol.min.js"></script>
-      <script type="text/javascript" src="https://componentes.cnig.es/api-core/js/configuration.js"></script>
-      <!-- Ficheros  javascript de los plugins añadidos-->
-      <script type="text/javascript" src="https://componentes.cnig.es/api-core/plugins/layerswitcher/layerswitcher.ol.min.js"></script>
+    <!-- Dependencias backimglayer -->
+    <link href="https://componentes.cnig.es/api-core/plugins/backimglayer/backimglayer.ol.min.css" rel="stylesheet" />
+    <style type="text/css">
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
 
-      <script type="text/javascript">
+<body>
+    <!-- Contenedor principal del mapa -->
+    <div id="mapjs" class="m-container"></div>
+    <!-- Ficheros javascript de la API -->
+    <script type="text/javascript" src="https://componentes.cnig.es/api-core/vendor/browser-polyfill.js"></script>
+    <script type="text/javascript" src="https://componentes.cnig.es/api-core/js/apiign.ol.min.js"></script>
+    <script type="text/javascript" src="https://componentes.cnig.es/api-core/js/configuration.js"></script>
+    <!-- Ficheros  javascript de los plugins añadidos-->
+    <script type="text/javascript"
+        src="https://componentes.cnig.es/api-core/plugins/layerswitcher/layerswitcher.ol.min.js"></script>
 
-          // Configuración del mapa
-          const mapjs = M.map({
-              container: 'mapjs', //id del contenedor del mapa
-              controls: ['panzoom', 'scale*true', 'scaleline', 'rotate', 'location', 'backgroundlayers'],
-              zoom: 7,
-              maxZoom: 20,
-              minZoom: 6,
-              center: [4142253, 1368187],
-          });
-          // Configuración de las capas
-          
-         
-          var jesuitmissions = new M.layer.GeoJSON({
-              name: "Jesuit Missions", 
-              url: "https://raw.githubusercontent.com/edumagundez/Ethiopian-Jesuit-missions-Site-Catchment-Analysis/main/jesuitmissions.geojson",
-              extract:false
-          });
+    <!-- Dependencias backimglayer -->
+    <script type="text/javascript"
+        src="https://componentes.cnig.es/api-core/plugins/backimglayer/backimglayer.ol.min.js"></script>
 
-          
-          
-          // Configuracion de estilos
-          let estilo1 = new M.style.Point({
-            fill: {
-              color: 'red',
-              opacity: 0.5,
-            },
-       
-          });	
-        
-        
-          // Asignamos el estilo a la capa
-          
-          jesuitmissions.setStyle(estilo1);
+    <script type="text/javascript">
 
-          
-       
-          // Configuración de los plugins
-          const mp8 = new M.plugin.Layerswitcher({
-            collapsed: false,
-            collapsible: true,
-          });
-          mapjs.addPlugin(mp8);
-
-          const osm = new M.layer.OSM({
-            name: 'OSM',
-            legend: 'OSM',
-            transparent: true,
-            tiled: true,
-            url: 'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            matrixSet: 'EPSG:3857',
-            displayInLayerSwitcher: true,
-            visible: true
+        // Configuración del mapa
+        const mapjs = M.map({
+            container: 'mapjs', //id del contenedor del mapa
+            controls: ['panzoom', 'scale*true', 'scaleline'],
+            zoom: 7,
+            maxZoom: 20,
+            minZoom: 6,
+            center: [4142253, 1368187],
         });
 
-        //mapjs.addLayers(osm);
-        mapjs.addLayers([osm,jesuitmissions]);
 
-      </script>
+        const mp = new M.plugin.BackImgLayer({
+            position: 'TR',
+            collapsible: true,
+            collapsed: false,
+            layerId: 0,
+            columnsNumber: 3,
+            layerVisibility: true,
+            layerOpts: [{
+                id: 'mapjs',
+                preview: 'https://componentes.cnig.es/api-core/plugins/backimglayer/images/svqmapa.png', // ruta relativa, edite por la deseada
+                title: 'OSM Map',
+                layers: [new M.layer.OSM({
+                    name: 'OSM',
+                    legend: 'OSM Map',
+                    transparent: true,
+                    tiled: true,
+                    url: 'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    matrixSet: 'EPSG:3857',
+                    displayInLayerSwitcher: false,
+                    visible: true,
+                })],
+                zIndex: 0
+            },
+            {
+                id: 'imagen',
+                title: 'Imagen',
+                preview: 'https://componentes.cnig.es/api-core/plugins/backimglayer/images/svqimagen.png', // ruta relativa, edite por la deseada
+                layers: [new M.layer.WMTS({
+                    url: 'http://www.ign.es/wmts/pnoa-ma?',
+                    name: 'OI.OrthoimageCoverage',
+                    legend: 'Imagen (PNOA)',
+                    matrixSet: 'GoogleMapsCompatible',
+                    transparent: false,
+                    displayInLayerSwitcher: false,
+                    queryable: false,
+                    visible: true,
+                    format: 'image/jpeg',
+                })],
+            },
+            {
+                id: 'hibrido',
+                title: 'Híbrido',
+                preview: 'https://componentes.cnig.es/api-core/plugins/backimglayer/images/svqhibrid.png', // ruta relativa, edite por la deseada
+                layers: [new M.layer.WMTS({
+                    url: 'http://www.ign.es/wmts/pnoa-ma?',
+                    name: 'OI.OrthoimageCoverage',
+                    legend: 'Imagen (PNOA)',
+                    matrixSet: 'GoogleMapsCompatible',
+                    transparent: true,
+                    displayInLayerSwitcher: false,
+                    queryable: false,
+                    visible: true,
+                    format: 'image/png',
+                }),
+                new M.layer.WMTS({
+                    url: 'http://www.ign.es/wmts/ign-base?',
+                    name: 'IGNBaseOrto',
+                    matrixSet: 'GoogleMapsCompatible',
+                    legend: 'Mapa IGN',
+                    transparent: false,
+                    displayInLayerSwitcher: false,
+                    queryable: false,
+                    visible: true,
+                    format: 'image/png',
+                })
+                ],
+            },
+            ],
+        });
+        mapjs.addPlugin(mp);
+
+        // Configuración de las capas
 
 
+        var jesuitmissions = new M.layer.GeoJSON({
+            name: "Jesuit Missions",
+            legend:"Jesuit Missions",
+            url: "https://raw.githubusercontent.com/edumagundez/Ethiopian-Jesuit-missions-Site-Catchment-Analysis/main/jesuitmissions.geojson",
+            extract: true
+        });
 
-  </body>
+
+        // Configuracion de estilos
+        let estilo1 = new M.style.Point({
+            fill: {
+                color: 'red',
+                opacity: 0.5,
+            },
+        });
+
+
+        // Asignamos el estilo a la capa
+
+        jesuitmissions.setStyle(estilo1);
+        jesuitmissions.setZIndex(999);
+        mapjs.addLayers([jesuitmissions]);
+
+
+        // Configuración de los plugins
+        const mp8 = new M.plugin.Layerswitcher({
+            collapsed: true,
+            collapsible: true,
+        });
+        mapjs.addPlugin(mp8);
+
+    </script>
+
+</body>
+
 </html>
