@@ -1,0 +1,98 @@
+<!DOCTYPE html>         
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="cnig" content="yes">
+    <title>Capas - GeoJSON</title>
+    <!-- Estilo de la API -->
+    <link type="text/css" rel="stylesheet" href="https://componentes.cnig.es/api-core/assets/css/apiign.ol.min.css">
+    <!-- Estilos de los plugins añadidos -->
+    <link href="https://componentes.cnig.es/api-core/plugins/layerswitcher/layerswitcher.ol.min.css" rel="stylesheet" />
+    <style type="text/css">
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+  </head>
+
+  <body>
+      <!-- Contenedor principal del mapa -->
+      <div id="mapjs" class="m-container"></div>
+      <!-- Ficheros javascript de la API -->
+      <script type="text/javascript" src="https://componentes.cnig.es/api-core/vendor/browser-polyfill.js"></script>
+      <script type="text/javascript" src="https://componentes.cnig.es/api-core/js/apiign.ol.min.js"></script>
+      <script type="text/javascript" src="https://componentes.cnig.es/api-core/js/configuration.js"></script>
+      <!-- Ficheros  javascript de los plugins añadidos-->
+      <script type="text/javascript" src="https://componentes.cnig.es/api-core/plugins/layerswitcher/layerswitcher.ol.min.js"></script>
+
+      <script type="text/javascript">
+
+          // Configuración del mapa
+          const mapjs = M.map({
+              container: 'mapjs', //id del contenedor del mapa
+              controls: ['panzoom', 'scale*true', 'scaleline', 'rotate', 'location', 'backgroundlayers'],
+              zoom: 7,
+              maxZoom: 20,
+              minZoom: 6,
+              center: [4142253, 1368187],
+          });
+          // Configuración de las capas
+          
+         
+          var jesuitmissions = new M.layer.GeoJSON({
+              name: "Jesuit Missions", 
+              url: "https://raw.githubusercontent.com/edumagundez/Ethiopian-Jesuit-missions-Site-Catchment-Analysis/main/jesuitmissions.geojson",
+              extract:false
+          });
+
+          
+          
+          // Configuracion de estilos
+          let estilo1 = new M.style.Point({
+            fill: {
+              color: 'red',
+              opacity: 0.5,
+            },
+       
+          });	
+        
+        
+          // Asignamos el estilo a la capa
+          
+          jesuitmissions.setStyle(estilo1);
+
+          
+       
+          // Configuración de los plugins
+          const mp8 = new M.plugin.Layerswitcher({
+            collapsed: false,
+            collapsible: true,
+          });
+          mapjs.addPlugin(mp8);
+
+          const osm = new M.layer.OSM({
+            name: 'OSM',
+            legend: 'OSM',
+            transparent: true,
+            tiled: true,
+            url: 'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            matrixSet: 'EPSG:3857',
+            displayInLayerSwitcher: true,
+            visible: true
+        });
+
+        //mapjs.addLayers(osm);
+        mapjs.addLayers([osm,jesuitmissions]);
+
+      </script>
+
+
+
+  </body>
+</html>
