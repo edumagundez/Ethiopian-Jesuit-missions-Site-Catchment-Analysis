@@ -144,6 +144,12 @@
             extract: true
         });
 
+        var pleaides_ethiopia_selected = new M.layer.GeoJSON({
+            name: "pleaides places",
+            legend: "Pleaides places",
+            url: "https://raw.githubusercontent.com/edumagundez/Ethiopian-Jesuit-missions-Site-Catchment-Analysis/main/pleaides_ethiopia_selected.geojson",
+            extract: true
+        });
 
         // Configuracion de estilos
         let estilo1 = new M.style.Point({
@@ -153,12 +159,21 @@
             },
         });
 
+        let estilo2 = new M.style.Point({
+            fill: {
+                color: 'blue',
+                opacity: 0.5,
+            },
+        });
+
 
         // Asignamos el estilo a la capa
 
         jesuitmissions.setStyle(estilo1);
+        pleaides_ethiopia_selected.setStyle(estilo2);
         jesuitmissions.setZIndex(9999);
-        mapjs.addLayers([jesuitmissions]);
+        pleaides_ethiopia_selected.setZIndex(10000);
+        mapjs.addLayers([jesuitmissions,pleaides_ethiopia_selected]);
 
 
         // Configuración de los plugins
