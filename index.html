@@ -19,8 +19,6 @@
             height: 100%;
             overflow: hidden;
         }
-
-        
     </style>
 
     <!-- Dependencias backimglayer -->
@@ -84,8 +82,9 @@
                     matrixSet: 'EPSG:3857',
                     displayInLayerSwitcher: false,
                     visible: true,
+                    
                 })],
-                zIndex: 0
+
             },
             {
                 id: 'imagen',
@@ -140,7 +139,7 @@
 
         var jesuitmissions = new M.layer.GeoJSON({
             name: "Jesuit Missions",
-            legend:"Jesuit Missions",
+            legend: "Jesuit Missions",
             url: "https://raw.githubusercontent.com/edumagundez/Ethiopian-Jesuit-missions-Site-Catchment-Analysis/main/jesuitmissions.geojson",
             extract: true
         });
@@ -158,7 +157,7 @@
         // Asignamos el estilo a la capa
 
         jesuitmissions.setStyle(estilo1);
-        jesuitmissions.setZIndex(999);
+        jesuitmissions.setZIndex(9999);
         mapjs.addLayers([jesuitmissions]);
 
 
