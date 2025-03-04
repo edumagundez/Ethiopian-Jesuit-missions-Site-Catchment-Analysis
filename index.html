@@ -31,10 +31,90 @@
             height: 100%;
             overflow: hidden;
         }
+
+        header {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      font-family: 'Fira Sans', sans-serif;
+      z-index: 1;
+      background-color: #5f4b35;
+      /* Azul oficial */
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+      -o-background-size: cover;
+
+      justify-content: space-between;
+    }
+
+    #mapjs {
+      height: calc(100vh - 50px);
+
+    }
+
+
+
+
+
+
+
+    .visor-title {
+      display: flex;
+      flex-flow: column wrap;
+      flex: 1;
+      justify-content: flex-end;
+      padding-right: 1rem;
+      margin-right: 0.5rem;
+      opacity: 1;
+      position: relative;
+      text-align: right;
+      font-family: "Avenir Next Condensed Medium";
+      letter-spacing: 0.5px;
+      /*border-right: 1px solid white;*/
+    }
+
+    .visor-title span:nth-child(1) {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: -4px;
+    }
+
+    .visor-title span:nth-child(1) b {
+      font-size: 20px;
+      margin-left: 2px;
+    }
+
+    .visor-title span:nth-child(2) {
+      color: #e1dfde;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+
     </style>
 </head>
 
 <body>
+
+      <!-- Cabecera -->
+  <header class="h-desktop">
+
+
+    <div class="header">
+      
+        <div class="visor-title">
+          <span title="Ethiopian Jesuit missions - Site Catchment Analysis">
+            Ethiopian Jesuit missions
+            <b>Site Catchment Analysis</b>
+          </span>
+        </div>
+      
+    </div>
+
+  </header>
+
     <!-- Contenedor principal del mapa -->
     <div id="mapjs" class="m-container"></div>
     <!-- Ficheros javascript de la API -->
@@ -49,7 +129,14 @@
     <script type="text/javascript"
         src="https://componentes.cnig.es/api-core/plugins/backimglayer/backimglayer.ol.min.js"></script>
 
+    <!-- Dependencias measurebar -->
+    <link href="https://componentes.cnig.es/api-core/plugins/measurebar/measurebar.ol.min.css" rel="stylesheet" />
+    <script type="text/javascript"
+        src="https://componentes.cnig.es/api-core/plugins/measurebar/measurebar.ol.min.js"></script>
+
     <script type="text/javascript">
+
+
 
         // Configuración del mapa
         const mapjs = M.map({
@@ -157,8 +244,8 @@
         });
 
 
-            
-        
+
+
 
         let estilo2 = new M.style.Point({
             fill: {
@@ -190,6 +277,12 @@
             collapsible: true,
         });
         mapjs.addPlugin(mp8);
+
+        const mp7 = new M.plugin.MeasureBar({
+            position: 'TR',
+        });
+
+        mapjs.addPlugin(mp7);
 
     </script>
 
