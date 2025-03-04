@@ -44,8 +44,8 @@
       -moz-background-size: cover;
       background-size: cover;
       -o-background-size: cover;
-
-      justify-content: space-between;
+      margin-left: auto;
+      justify-content: flex-end;
     }
 
     #mapjs {
@@ -53,43 +53,34 @@
 
     }
 
-
-
-
-
-
-
     .visor-title {
       display: flex;
       flex-flow: column wrap;
-      flex: 1;
       justify-content: flex-end;
       padding-right: 1rem;
       margin-right: 0.5rem;
       opacity: 1;
       position: relative;
       text-align: right;
-      font-family: "Avenir Next Condensed Medium";
       letter-spacing: 0.5px;
       /*border-right: 1px solid white;*/
     }
 
     .visor-title span:nth-child(1) {
       color: white;
-      font-weight: bold;
-      font-size: 20px;
+      font-size: 18px;
       margin-bottom: -4px;
     }
 
     .visor-title span:nth-child(1) b {
-      font-size: 20px;
+      font-size: 18px;
       margin-left: 2px;
     }
 
     .visor-title span:nth-child(2) {
       color: #e1dfde;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 18px;
     }
 
 
@@ -105,8 +96,8 @@
     <div class="header">
       
         <div class="visor-title">
-          <span title="Ethiopian Jesuit missions - Site Catchment Analysis">
-            Ethiopian Jesuit missions
+          <span title="Jesuit missions in Ethiopia - Site Catchment Analysis">
+            Jesuit missions in Ethiopia (1557–1632) <br>
             <b>Site Catchment Analysis</b>
           </span>
         </div>
@@ -143,7 +134,7 @@
             container: 'mapjs', //id del contenedor del mapa
             controls: ['panzoom', 'scale*true', 'scaleline'],
             zoom: 8,
-            maxZoom: 20,
+            maxZoom: 15,
             minZoom: 6,
             center: [4242253, 1468187],
         });
@@ -152,7 +143,7 @@
         const mp = new M.plugin.BackImgLayer({
             position: 'TR',
             collapsible: true,
-            collapsed: false,
+            collapsed: true,
             layerId: 0,
             columnsNumber: 3,
             layerVisibility: true,
@@ -230,6 +221,13 @@
             extract: true
         });
 
+        var faremona_isocronas = new M.layer.GeoJSON({
+            name: "faremona isochrone",
+            legend: "Faremona isochrones",
+            url: "https://raw.githubusercontent.com/edumagundez/Ethiopian-Jesuit-missions-Site-Catchment-Analysis/main/faremona_isocronas.geojson",
+            extract: true
+        });
+
         // Configuracion de estilos
         let estilo1 = new M.style.Point({
             fill: {
@@ -265,10 +263,12 @@
         jesuitmissions.setStyle(estilo1);
         pleaides_ethiopia_selected.setStyle(estilo2);
         gorgora_isocronas.setStyle(estilo_isocrona);
+        faremona_isocronas.setStyle(estilo_isocrona);
         jesuitmissions.setZIndex(9999);
         pleaides_ethiopia_selected.setZIndex(10000);
         gorgora_isocronas.setZIndex(10001);
-        mapjs.addLayers([jesuitmissions, gorgora_isocronas]);
+        faremona_isocronas.setZIndex(10002);
+        mapjs.addLayers([jesuitmissions, gorgora_isocronas,faremona_isocronas]);
 
 
         // Configuración de los plugins
