@@ -55,7 +55,7 @@
         const mapjs = M.map({
             container: 'mapjs', //id del contenedor del mapa
             controls: ['panzoom', 'scale*true', 'scaleline'],
-            zoom: 7,
+            zoom: 8,
             maxZoom: 20,
             minZoom: 6,
             center: [4142253, 1368187],
@@ -69,10 +69,38 @@
             layerId: 0,
             columnsNumber: 3,
             layerVisibility: true,
-            layerOpts: [{
+            layerOpts: [
+            {
+                id: 'imagen',
+                title: 'Sentinel-2 image',
+                preview: 'https://componentes.cnig.es/api-core/plugins/backimglayer/images/svqimagen.png', // ruta relativa, edite por la deseada
+                layers: [new M.layer.WMS({
+                    url: 'https://tiles.maps.eox.at/wms?',
+                    name: 's2cloudless-2023_3857',
+                    legend: 'Sentinel-2 2023',
+                    visibility: true,
+                    //isBase: false,
+                    tiled: true,
+                    useCapabilities: false,
+                    version: '1.3.0',
+
+
+                    //url: 'http://www.ign.es/wmts/pnoa-ma?',
+                    //name: 'OI.OrthoimageCoverage',
+                    //legend: 'Imagen (PNOA)',
+                    //matrixSet: 'GoogleMapsCompatible',
+                    //transparent: false,
+                    displayInLayerSwitcher: false,
+                    queryable: false,
+                    visible: true,
+                    format: 'image/jpeg',
+                })],
+            },                
+            
+            {
                 id: 'mapjs',
                 preview: 'https://componentes.cnig.es/api-core/plugins/backimglayer/images/svqmapa.png', // ruta relativa, edite por la deseada
-                title: 'OSM Map',
+                title: 'OpenStreetMap',
                 layers: [new M.layer.OSM({
                     name: 'OSM',
                     legend: 'OSM Map',
@@ -86,50 +114,7 @@
                 })],
 
             },
-            {
-                id: 'imagen',
-                title: 'Imagen',
-                preview: 'https://componentes.cnig.es/api-core/plugins/backimglayer/images/svqimagen.png', // ruta relativa, edite por la deseada
-                layers: [new M.layer.WMTS({
-                    url: 'http://www.ign.es/wmts/pnoa-ma?',
-                    name: 'OI.OrthoimageCoverage',
-                    legend: 'Imagen (PNOA)',
-                    matrixSet: 'GoogleMapsCompatible',
-                    transparent: false,
-                    displayInLayerSwitcher: false,
-                    queryable: false,
-                    visible: true,
-                    format: 'image/jpeg',
-                })],
-            },
-            {
-                id: 'hibrido',
-                title: 'Híbrido',
-                preview: 'https://componentes.cnig.es/api-core/plugins/backimglayer/images/svqhibrid.png', // ruta relativa, edite por la deseada
-                layers: [new M.layer.WMTS({
-                    url: 'http://www.ign.es/wmts/pnoa-ma?',
-                    name: 'OI.OrthoimageCoverage',
-                    legend: 'Imagen (PNOA)',
-                    matrixSet: 'GoogleMapsCompatible',
-                    transparent: true,
-                    displayInLayerSwitcher: false,
-                    queryable: false,
-                    visible: true,
-                    format: 'image/png',
-                }),
-                new M.layer.WMTS({
-                    url: 'http://www.ign.es/wmts/ign-base?',
-                    name: 'IGNBaseOrto',
-                    matrixSet: 'GoogleMapsCompatible',
-                    legend: 'Mapa IGN',
-                    transparent: false,
-                    displayInLayerSwitcher: false,
-                    queryable: false,
-                    visible: true,
-                    format: 'image/png',
-                })
-                ],
-            },
+
             ],
         });
         mapjs.addPlugin(mp);
@@ -148,7 +133,8 @@
             name: "pleaides places",
             legend: "Pleaides places",
             url: "https://raw.githubusercontent.com/edumagundez/Ethiopian-Jesuit-missions-Site-Catchment-Analysis/main/pleaides_ethiopia_selected.geojson",
-            extract: true
+            extract: true,
+            visible: false
         });
 
         var gorgora_isocronas = new M.layer.GeoJSON({
@@ -175,7 +161,7 @@
 
         let estilo_isocrona = new M.style.Line({
             fill: {
-                color: 'blue',
+                color: '#FFD700',
             },
         });
 
@@ -187,7 +173,7 @@
         jesuitmissions.setZIndex(9999);
         pleaides_ethiopia_selected.setZIndex(10000);
         gorgora_isocronas.setZIndex(10001);
-        mapjs.addLayers([jesuitmissions, gorgora_isocronas,pleaides_ethiopia_selected]);
+        mapjs.addLayers([jesuitmissions, gorgora_isocronas, pleaides_ethiopia_selected]);
 
 
         // Configuración de los plugins
