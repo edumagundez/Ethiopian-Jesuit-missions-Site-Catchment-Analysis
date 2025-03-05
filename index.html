@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -108,8 +108,9 @@
     <div id="mapjs" class="m-container"></div>
     <!-- Ficheros javascript de la API -->
     <script type="text/javascript" src="https://componentes.cnig.es/api-core/vendor/browser-polyfill.js"></script>
-    <script type="text/javascript" src="https://componentes.cnig.es/api-core/js/apiign.ol.min.js"></script>
+    <script type="text/javascript" src="https://componentes.cnig.es/api-core/js/apiign.ol.min.js?lang=en"></script>
     <script type="text/javascript" src="https://componentes.cnig.es/api-core/js/configuration.js"></script>
+
     <!-- Ficheros  javascript de los plugins añadidos-->
     <script type="text/javascript"
         src="https://componentes.cnig.es/api-core/plugins/layerswitcher/layerswitcher.ol.min.js"></script>
@@ -125,7 +126,8 @@
 
     <script type="text/javascript">
 
-
+        // Configuración del idioma
+        M.language.setLang('en');
 
         // Configuración del mapa
         const mapjs = M.map({
@@ -276,29 +278,29 @@
         // Asignamos el estilo a la capa
 
         jesuitmissions.setStyle(estilo1);
-            pleaides_ethiopia_selected.setStyle(estilo2);
-            gorgora_isocronas.setStyle(estilo_isocrona);
-            faremona_isocronas.setStyle(estilo_isocrona);
-            jesuitmissions.setZIndex(9999);
-            pleaides_ethiopia_selected.setZIndex(10000);
-            gorgora_isocronas.setZIndex(10001);
-            faremona_isocronas.setZIndex(10002);
+        pleaides_ethiopia_selected.setStyle(estilo2);
+        gorgora_isocronas.setStyle(estilo_isocrona);
+        faremona_isocronas.setStyle(estilo_isocrona);
+        jesuitmissions.setZIndex(9999);
+        pleaides_ethiopia_selected.setZIndex(10000);
+        gorgora_isocronas.setZIndex(10001);
+        faremona_isocronas.setZIndex(10002);
 
-            mapjs.addLayers([jesuitmissions, gorgora_isocronas, faremona_isocronas]);
+        mapjs.addLayers([jesuitmissions, gorgora_isocronas, faremona_isocronas]);
 
 
-            // Configuración de los plugins
-            const mp8 = new M.plugin.Layerswitcher({
-                collapsed: true,
-                collapsible: true,
-            });
-            mapjs.addPlugin(mp8);
+        // Configuración de los plugins
+        const mp8 = new M.plugin.Layerswitcher({
+            collapsed: true,
+            collapsible: true,
+        });
+        mapjs.addPlugin(mp8);
 
-            const mp7 = new M.plugin.MeasureBar({
-                position: 'TR',
-            });
+        const mp7 = new M.plugin.MeasureBar({
+            position: 'TR',
+        });
 
-            mapjs.addPlugin(mp7);
+        mapjs.addPlugin(mp7);
 
     </script>
 
