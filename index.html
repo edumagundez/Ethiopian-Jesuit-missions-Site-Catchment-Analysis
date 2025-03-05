@@ -33,78 +33,76 @@
         }
 
         header {
-      height: 50px;
-      display: flex;
-      align-items: center;
-      font-family: 'Fira Sans', sans-serif;
-      z-index: 1;
-      background-color: #5f4b35;
-      /* Azul oficial */
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      background-size: cover;
-      -o-background-size: cover;
-      margin-left: auto;
-      justify-content: flex-end;
-    }
+            height: 50px;
+            display: flex;
+            align-items: center;
+            font-family: 'Fira Sans', sans-serif;
+            z-index: 1;
+            background-color: #5f4b35;
+            /* Azul oficial */
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover;
+            margin-left: auto;
+            justify-content: flex-end;
+        }
 
-    #mapjs {
-      height: calc(100vh - 50px);
+        #mapjs {
+            height: calc(100vh - 50px);
 
-    }
+        }
 
-    .visor-title {
-      display: flex;
-      flex-flow: column wrap;
-      justify-content: flex-end;
-      padding-right: 1rem;
-      margin-right: 0.5rem;
-      opacity: 1;
-      position: relative;
-      text-align: right;
-      letter-spacing: 0.5px;
-      /*border-right: 1px solid white;*/
-    }
+        .visor-title {
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            margin-right: 0.5rem;
+            opacity: 1;
+            position: relative;
+            text-align: right;
+            letter-spacing: 0.5px;
+            /*border-right: 1px solid white;*/
+        }
 
-    .visor-title span:nth-child(1) {
-      color: white;
-      font-size: 18px;
-      margin-bottom: -4px;
-    }
+        .visor-title span:nth-child(1) {
+            color: white;
+            font-size: 18px;
+            margin-bottom: -4px;
+        }
 
-    .visor-title span:nth-child(1) b {
-      font-size: 18px;
-      margin-left: 2px;
-    }
+        .visor-title span:nth-child(1) b {
+            font-size: 18px;
+            margin-left: 2px;
+        }
 
-    .visor-title span:nth-child(2) {
-      color: #e1dfde;
-      font-weight: bold;
-      font-size: 18px;
-    }
-
-
+        .visor-title span:nth-child(2) {
+            color: #e1dfde;
+            font-weight: bold;
+            font-size: 18px;
+        }
     </style>
 </head>
 
 <body>
 
-      <!-- Cabecera -->
-  <header class="h-desktop">
+    <!-- Cabecera -->
+    <header class="h-desktop">
 
 
-    <div class="header">
-      
-        <div class="visor-title">
-          <span title="Jesuit missions in Ethiopia - Site Catchment Analysis">
-            Jesuit missions in Ethiopia (1557–1632) <br>
-            <b>Site Catchment Analysis</b>
-          </span>
+        <div class="header">
+
+            <div class="visor-title">
+                <span title="Jesuit missions in Ethiopia - Site Catchment Analysis">
+                    Jesuit missions in Ethiopia (1557–1632) <br>
+                    <b>Site Catchment Analysis</b>
+                </span>
+            </div>
+
         </div>
-      
-    </div>
 
-  </header>
+    </header>
 
     <!-- Contenedor principal del mapa -->
     <div id="mapjs" class="m-container"></div>
@@ -193,6 +191,27 @@
 
                 },
 
+                {
+                    id: 'lc2015',
+                    preview: 'https://s3-eu-west-1.amazonaws.com/vito-lcv/global/2015/cog-full_l0-colored-full/8/154/136.png', // ruta relativa, edite por la deseada
+                    title: 'Land Cover 2015',
+                    layers: [new M.layer.TMS({
+                        name: 'Land Cover 2015',
+                        legend: 'Land Cover 2015',
+                        transparent: true,
+                        tiled: true,
+                        minZoom: 3,
+                        maxZoom: 20,
+                        url: 'https://s3-eu-west-1.amazonaws.com/vito-lcv/global/2015/cog-full_l0-colored-full/{z}/{x}/{-y}.png',
+                        projection: 'EPSG:3857',
+                        tileGridMaxZoom: 17,
+                        displayInLayerSwitcher: false,
+                        visible: true,
+
+                    })],
+
+                },
+
             ],
         });
         mapjs.addPlugin(mp);
@@ -241,10 +260,6 @@
             radius: 4,
         });
 
-
-
-
-
         let estilo2 = new M.style.Point({
             fill: {
                 color: 'blue',
@@ -261,28 +276,29 @@
         // Asignamos el estilo a la capa
 
         jesuitmissions.setStyle(estilo1);
-        pleaides_ethiopia_selected.setStyle(estilo2);
-        gorgora_isocronas.setStyle(estilo_isocrona);
-        faremona_isocronas.setStyle(estilo_isocrona);
-        jesuitmissions.setZIndex(9999);
-        pleaides_ethiopia_selected.setZIndex(10000);
-        gorgora_isocronas.setZIndex(10001);
-        faremona_isocronas.setZIndex(10002);
-        mapjs.addLayers([jesuitmissions, gorgora_isocronas,faremona_isocronas]);
+            pleaides_ethiopia_selected.setStyle(estilo2);
+            gorgora_isocronas.setStyle(estilo_isocrona);
+            faremona_isocronas.setStyle(estilo_isocrona);
+            jesuitmissions.setZIndex(9999);
+            pleaides_ethiopia_selected.setZIndex(10000);
+            gorgora_isocronas.setZIndex(10001);
+            faremona_isocronas.setZIndex(10002);
+
+            mapjs.addLayers([jesuitmissions, gorgora_isocronas, faremona_isocronas]);
 
 
-        // Configuración de los plugins
-        const mp8 = new M.plugin.Layerswitcher({
-            collapsed: true,
-            collapsible: true,
-        });
-        mapjs.addPlugin(mp8);
+            // Configuración de los plugins
+            const mp8 = new M.plugin.Layerswitcher({
+                collapsed: true,
+                collapsible: true,
+            });
+            mapjs.addPlugin(mp8);
 
-        const mp7 = new M.plugin.MeasureBar({
-            position: 'TR',
-        });
+            const mp7 = new M.plugin.MeasureBar({
+                position: 'TR',
+            });
 
-        mapjs.addPlugin(mp7);
+            mapjs.addPlugin(mp7);
 
     </script>
 
