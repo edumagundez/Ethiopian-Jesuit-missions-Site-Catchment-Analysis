@@ -243,6 +243,13 @@
             extract: true
         });
 
+        var gorgora_isocronas_area = new M.layer.GeoJSON({
+            name: "gorgora isochrone area",
+            legend: "Gorgora Nova isochrones",
+            url: "https://raw.githubusercontent.com/edumagundez/Ethiopian-Jesuit-missions-Site-Catchment-Analysis/main/gorgora_isocronas_025_4326_area.geojson",
+            extract: true
+        });
+
         var faremona_isocronas = new M.layer.GeoJSON({
             name: "faremona isochrone",
             legend: "Faremona isochrones",
@@ -276,18 +283,31 @@
             },
         });
 
+        let estilo_isocrona_area = new M.style.Polygon({
+            fill: {
+                    color: '#FFFFFF',
+                    opacity: 0.05,
+                },
+                stroke: {
+                    color: '#FFD700',
+                    width: 1
+                }
+        });
+
         // Asignamos el estilo a la capa
 
         jesuitmissions.setStyle(estilo1);
         pleaides_ethiopia_selected.setStyle(estilo2);
         gorgora_isocronas.setStyle(estilo_isocrona);
         faremona_isocronas.setStyle(estilo_isocrona);
-        jesuitmissions.setZIndex(9999);
+        gorgora_isocronas_area.setStyle(estilo_isocrona_area);
+        jesuitmissions.setZIndex(10003);
         pleaides_ethiopia_selected.setZIndex(10000);
         gorgora_isocronas.setZIndex(10001);
         faremona_isocronas.setZIndex(10002);
+        gorgora_isocronas_area.setZIndex(9999);
 
-        mapjs.addLayers([jesuitmissions, gorgora_isocronas, faremona_isocronas]);
+        mapjs.addLayers([gorgora_isocronas_area,jesuitmissions, faremona_isocronas]);
 
 
         // Configuración de los plugins
