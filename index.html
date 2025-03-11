@@ -22,6 +22,7 @@
         }
     </style>
 
+
     <!-- Dependencias backimglayer -->
     <link href="https://componentes.cnig.es/api-core/plugins/backimglayer/backimglayer.ol.min.css" rel="stylesheet" />
     <style type="text/css">
@@ -125,6 +126,11 @@
     <script type="text/javascript"
         src="https://componentes.cnig.es/api-core/plugins/measurebar/measurebar.ol.min.js"></script>
 
+    <!-- Dependencias selectionzoom -->
+    <link href="https://componentes.cnig.es/api-core/plugins/selectionzoom/selectionzoom.ol.min.css" rel="stylesheet" />
+    <script type="text/javascript"
+        src="https://componentes.cnig.es/api-core/plugins/selectionzoom/selectionzoom.ol.min.js"></script>
+
     <script type="text/javascript">
 
         // Configuración del idioma
@@ -133,11 +139,90 @@
         // Configuración del mapa
         const mapjs = M.map({
             container: 'mapjs', //id del contenedor del mapa
-            controls: ['panzoom', 'scale*true', 'scaleline'],
+            controls: ['panzoom', 'scale*true'],
             zoom: 8,
             maxZoom: 15,
             minZoom: 6,
             center: [4242253, 1468187],
+        });
+
+
+        const vistas = new M.plugin.SelectionZoom({
+            position: 'BL',
+            collapsible: true,
+            collapsed: true,
+            options: [
+                {
+                    id: 'azazo',
+                    title: 'Azazo',
+                    preview: 'https://tiles.maps.eox.at/wms?REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&FORMAT=image%2Fpng&STYLES=&TRANSPARENT=true&LAYERS=s2cloudless-2023_3857&WIDTH=256&HEIGHT=256&CRS=EPSG%3A3857&BBOX=4165747%2C1406732%2C4168193%2C1409178&_=%20undefined',
+                    center: '4166948, 1407615',
+                    zoom: 14
+                },
+                {
+                    id: 'Dabarwa',
+                    title: 'Dabarwa',
+                    preview: 'https://tiles.maps.eox.at/wms?REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&FORMAT=image%2Fpng&STYLES=&TRANSPARENT=true&LAYERS=s2cloudless-2023_3857&WIDTH=256&HEIGHT=256&CRS=EPSG%3A3857&BBOX=4321851%2C1698955%2C4324297%2C1701401&_=%20undefined',
+                    center: '4323052, 1699838',
+                    zoom: 14
+                },
+                {
+                    id: 'Danqaz',
+                    title: 'Danqaz',
+                    preview: 'https://tiles.maps.eox.at/wms?REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&FORMAT=image%2Fpng&STYLES=&TRANSPARENT=true&LAYERS=s2cloudless-2023_3857&WIDTH=256&HEIGHT=256&CRS=EPSG%3A3857&BBOX=4190614%2C1401695%2C4193060%2C1404141&_=%20undefined',
+                    center: '4191815, 1402578',
+                    zoom: 14
+                },
+                {
+                    id: 'Dabsan',
+                    title: 'Dabsan',
+                    preview: 'https://tiles.maps.eox.at/wms?REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&FORMAT=image%2Fpng&STYLES=&TRANSPARENT=true&LAYERS=s2cloudless-2023_3857&WIDTH=256&HEIGHT=256&CRS=EPSG%3A3857&BBOX=4189822%2C1374973%2C4192268%2C1377419&_=%20undefined',
+                    center: '4191023, 1375856',
+                    zoom: 14
+                },
+                {
+                    id: 'Faremona',
+                    title: 'Faremona',
+                    preview: 'https://tiles.maps.eox.at/wms?REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&FORMAT=image%2Fpng&STYLES=&TRANSPARENT=true&LAYERS=s2cloudless-2023_3857&WIDTH=256&HEIGHT=256&CRS=EPSG%3A3857&BBOX=4326848%2C1593124%2C4329294%2C1595570&_=%20undefined',
+                    center: '4328049, 1594007',
+                    zoom: 14
+                },
+                {
+                    id: 'GorgoraNova',
+                    title: 'Gorgora Nova',
+                    preview: 'https://tiles.maps.eox.at/wms?REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&FORMAT=image%2Fpng&STYLES=&TRANSPARENT=true&LAYERS=s2cloudless-2023_3857&WIDTH=256&HEIGHT=256&CRS=EPSG%3A3857&BBOX=4141052%2C1367305%2C4143498%2C1369751&_=%20undefined',
+                    center: '4142253, 1368188',
+                    zoom: 14
+                },
+                {
+                    id: 'LaggaNegus',
+                    title: 'Lagga Negus',
+                    preview: 'https://tiles.maps.eox.at/wms?REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&FORMAT=image%2Fpng&STYLES=&TRANSPARENT=true&LAYERS=s2cloudless-2023_3857&WIDTH=256&HEIGHT=256&CRS=EPSG%3A3857&BBOX=4152587%2C1237200%2C4155033%2C1239646&_=%20undefined',
+                    center: '4153788, 1238083',
+                    zoom: 14
+                },
+                {
+                    id: 'MartulaMaryam',
+                    title: 'Martula Maryam',
+                    preview: 'https://tiles.maps.eox.at/wms?REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&FORMAT=image%2Fpng&STYLES=&TRANSPARENT=true&LAYERS=s2cloudless-2023_3857&WIDTH=256&HEIGHT=256&CRS=EPSG%3A3857&BBOX=4259442%2C1215101%2C4261888%2C1217547&_=%20undefined',
+                    center: '4260643, 1215984',
+                    zoom: 14
+                },
+                {
+                    id: 'Qwallala',
+                    title: 'Qwallala',
+                    preview: 'https://tiles.maps.eox.at/wms?REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&FORMAT=image%2Fpng&STYLES=&TRANSPARENT=true&LAYERS=s2cloudless-2023_3857&WIDTH=256&HEIGHT=256&CRS=EPSG%3A3857&BBOX=4185264%2C1248641%2C4187710%2C1251087&_=%20undefined',
+                    center: '4186465, 1249524',
+                    zoom: 14
+                },
+                {
+                    id: 'Sarka',
+                    title: 'Sarka',
+                    preview: 'https://tiles.maps.eox.at/wms?REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&FORMAT=image%2Fpng&STYLES=&TRANSPARENT=true&LAYERS=s2cloudless-2023_3857&WIDTH=256&HEIGHT=256&CRS=EPSG%3A3857&BBOX=4161062%2C1268501%2C4163508%2C1270947&_=%20undefined',
+                    center: '4162263, 1269384',
+                    zoom: 14
+                }
+            ]
         });
 
 
@@ -322,6 +407,7 @@
         });
 
         mapjs.addPlugin(mp7);
+        mapjs.addPlugin(vistas);
 
     </script>
 
