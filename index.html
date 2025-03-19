@@ -247,13 +247,6 @@
                         tiled: true,
                         useCapabilities: false,
                         version: '1.3.0',
-
-
-                        //url: 'http://www.ign.es/wmts/pnoa-ma?',
-                        //name: 'OI.OrthoimageCoverage',
-                        //legend: 'Imagen (PNOA)',
-                        //matrixSet: 'GoogleMapsCompatible',
-                        //transparent: false,
                         displayInLayerSwitcher: false,
                         queryable: false,
                         visible: true,
@@ -321,6 +314,13 @@
             extract: true,
         });
 
+        var orthodox = new M.layer.GeoJSON({
+            name: "orthodox",
+            legend: "Orthodox Monasteries",
+            url: "https://raw.githubusercontent.com/edumagundez/Ethiopian-Jesuit-missions-Site-Catchment-Analysis/main/orthodoxmonasteries.geojson",
+            extract: true,
+        });
+
         var isocronas = new M.layer.GeoJSON({
             name: "isochrones",
             legend: "One hour isochrones",
@@ -345,8 +345,13 @@
         let estilo2 = new M.style.Point({
             fill: {
                 color: 'blue',
-                opacity: 0.5,
+                opacity: 0.8,
             },
+            stroke: {
+                color: "white",
+                width: 2,
+            },
+            radius: 4,
         });
 
         let estilo_isocrona = new M.style.Line({
@@ -369,14 +374,14 @@
         // Asignamos el estilo a la capa
 
         jesuitmissions.setStyle(estilo1);
-        pleaides_ethiopia_selected.setStyle(estilo2);
+        orthodox.setStyle(estilo2);
         isocronas.setStyle(estilo_isocrona_area);
         jesuitmissions.setZIndex(10003);
-        pleaides_ethiopia_selected.setZIndex(10000);
+        orthodox.setZIndex(10000);
         isocronas.setZIndex(10001);
 
 
-        mapjs.addLayers([isocronas, jesuitmissions]);
+        mapjs.addLayers([isocronas, jesuitmissions,orthodox]);
 
 
         // Configuración de los plugins
