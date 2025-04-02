@@ -140,7 +140,7 @@
         const mapjs = M.map({
             container: 'mapjs', //id del contenedor del mapa
             controls: ['panzoom', 'scale*true'],
-            zoom: 8,
+            zoom: 7,
             maxZoom: 15,
             minZoom: 6,
             center: [4242253, 1468187],
@@ -379,8 +379,8 @@
         orthodox.setStyle(estilo2);
         isocronas.setStyle(estilo_isocrona_area);
         jesuitmissions.setZIndex(10003);
-        orthodox.setZIndex(10000);
-        isocronas.setZIndex(10001);
+        orthodox.setZIndex(10001);
+        isocronas.setZIndex(10000);
 
 
         mapjs.addLayers([isocronas, jesuitmissions, orthodox]);
