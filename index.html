@@ -358,17 +358,19 @@
             fill: {
                 color: '#FFD700',
             },
-        });
+         });
 
         let estilo_isocrona_area = new M.style.Polygon({
-            fill: {
-                color: '#FFFFFF',
-                opacity: 0,
-            },
+
             stroke: {
                 color: '#FFD700',
-                width: 1.5
-            }
+                width: 3
+            },
+            fill: {
+                color: '#FFD700',
+                opacity: 0,
+            },
+
         });
 
         // Asignamos el estilo a la capa
@@ -381,7 +383,7 @@
         isocronas.setZIndex(10001);
 
 
-        mapjs.addLayers([isocronas, jesuitmissions,orthodox]);
+        mapjs.addLayers([isocronas, jesuitmissions, orthodox]);
 
 
         // Configuración de los plugins
