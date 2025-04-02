@@ -1,17 +1,22 @@
 {
 "type": "FeatureCollection",
 "name": "jesuitmissions",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::3857" } },
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-08,
 "features": [
-{ "type": "Feature", "properties": { "ID": 1, "X": 487000, "Y": 1566800, "nombre": "Faremona" }, "geometry": { "type": "Point", "coordinates": [ 4328049.377291011624038, 1594006.767442576121539 ] } },
-{ "type": "Feature", "properties": { "ID": 2, "X": 347960, "Y": 1233315, "nombre": "Qwallala" }, "geometry": { "type": "Point", "coordinates": [ 4186464.788565996102989, 1249524.374259814154357 ] } },
-{ "type": "Feature", "properties": { "ID": 3, "X": 329675, "Y": 1387150, "nombre": "Azazo-Gannata Iyasus" }, "geometry": { "type": "Point", "coordinates": [ 4166947.968727151863277, 1407615.128568643238395 ] } },
-{ "type": "Feature", "properties": { "ID": 4, "X": 305310, "Y": 1349030, "nombre": "Gorgora Nova" }, "geometry": { "type": "Point", "coordinates": [ 4142253.333736976142973, 1368187.820491746533662 ] } },
-{ "type": "Feature", "properties": { "ID": 5, "X": 324320, "Y": 1252790, "nombre": "Sarka" }, "geometry": { "type": "Point", "coordinates": [ 4162262.714190304744989, 1269383.64549493486993 ] } },
-{ "type": "Feature", "properties": { "ID": 6, "X": 353020, "Y": 1356200, "nombre": "Infraz-Dabsan" }, "geometry": { "type": "Point", "coordinates": [ 4191022.489596411120147, 1375855.924713326152414 ] } },
-{ "type": "Feature", "properties": { "ID": 7, "X": 420650, "Y": 1200350, "nombre": "Innabese-Martula Maryam" }, "geometry": { "type": "Point", "coordinates": [ 4260642.995115063153207, 1215983.648300641681999 ] } },
-{ "type": "Feature", "properties": { "ID": 8, "X": 315835, "Y": 1222325, "nombre": "Lagga Negus" }, "geometry": { "type": "Point", "coordinates": [ 4153787.829560589976609, 1238082.594843325903639 ] } },
-{ "type": "Feature", "properties": { "ID": 9, "X": 482230, "Y": 1668540, "nombre": "Dabarwa" }, "geometry": { "type": "Point", "coordinates": [ 4323052.152046894654632, 1699838.120026700897142 ] } },
-{ "type": "Feature", "properties": { "ID": 10, "X": 353925, "Y": 1382130, "nombre": "Danqaz" }, "geometry": { "type": "Point", "coordinates": [ 4191815.079286541324109, 1402577.980955939507112 ] } }
+{ "type": "Feature", "properties": { "X": 487000, "Y": 1566800, "name": "Faremona" }, "geometry": { "type": "Point", "coordinates": [ 38.87952906, 14.1724328 ] } },
+{ "type": "Feature", "properties": { "X": 347960, "Y": 1233315, "name": "Qwallala" }, "geometry": { "type": "Point", "coordinates": [ 37.60765306, 11.15354983 ] } },
+{ "type": "Feature", "properties": { "X": 329675, "Y": 1387150, "name": "Azazo-Gannata Iyasus" }, "geometry": { "type": "Point", "coordinates": [ 37.43233048, 12.54340838 ] } },
+{ "type": "Feature", "properties": { "X": 305310, "Y": 1349030, "name": "Gorgora Nova" }, "geometry": { "type": "Point", "coordinates": [ 37.2104948, 12.19745047 ] } },
+{ "type": "Feature", "properties": { "X": 324320, "Y": 1252790, "name": "Sarka" }, "geometry": { "type": "Point", "coordinates": [ 37.39024213, 11.32852618 ] } },
+{ "type": "Feature", "properties": { "X": 353020, "Y": 1356200, "name": "Infraz-Dabsan" }, "geometry": { "type": "Point", "coordinates": [ 37.64859558, 12.26477062 ] } },
+{ "type": "Feature", "properties": { "X": 420650, "Y": 1200350, "name": "Innabese-Martula Maryam" }, "geometry": { "type": "Point", "coordinates": [ 38.27400723, 10.85779016 ] } },
+{ "type": "Feature", "properties": { "X": 315835, "Y": 1222325, "name": "Lagga Negus" }, "geometry": { "type": "Point", "coordinates": [ 37.31411094, 11.05269046 ] } },
+{ "type": "Feature", "properties": { "X": 482230, "Y": 1668540, "name": "Dabarwa" }, "geometry": { "type": "Point", "coordinates": [ 38.83463822, 15.09228643 ] } },
+{ "type": "Feature", "properties": { "X": 353925, "Y": 1382130, "name": "Danqaz" }, "geometry": { "type": "Point", "coordinates": [ 37.65571554, 12.49923516 ] } },
+{ "type": "Feature", "properties": { "X": 390334, "Y": 1224087, "name": "Ḥadaša" }, "geometry": { "type": "Point", "coordinates": [ 37.99594026, 11.07165571 ] } },
+{ "type": "Feature", "properties": { "X": 256433, "Y": 1253628, "name": "Tänḵa" }, "geometry": { "type": "Point", "coordinates": [ 36.76841687, 11.33205777 ] } },
+{ "type": "Feature", "properties": { "X": 411080, "Y": 1323000, "name": "Atkäna" }, "geometry": { "type": "Point", "coordinates": [ 38.18328986, 11.96667467 ] } },
+{ "type": "Feature", "properties": { "X": 290824, "Y": 1259025, "name": "Näfaša" }, "geometry": { "type": "Point", "coordinates": [ 37.08305161, 11.38305172 ] } }
 ]
 }

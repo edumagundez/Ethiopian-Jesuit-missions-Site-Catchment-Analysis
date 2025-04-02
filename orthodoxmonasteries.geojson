@@ -4,11 +4,25 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "xy_coordinate_resolution": 1e-08,
 "features": [
-{ "type": "Feature", "properties": { "Name": "Debre Abbay" }, "geometry": { "type": "Point", "coordinates": [ 37.98333333, 13.86666667 ] } },
-{ "type": "Feature", "properties": { "Name": "Debre Dammo" }, "geometry": { "type": "Point", "coordinates": [ 39.29027778, 14.37388889 ] } },
-{ "type": "Feature", "properties": { "Name": "Debre Libanos" }, "geometry": { "type": "Point", "coordinates": [ 38.8475, 9.71194444 ] } },
-{ "type": "Feature", "properties": { "Name": "Debre Kerbe" }, "geometry": { "type": "Point", "coordinates": [ 39.3600672, 11.520433 ] } },
-{ "type": "Feature", "properties": { "Name": "Debre Istifanos" }, "geometry": { "type": "Point", "coordinates": [ 39.6976, 11.3387 ] } },
-{ "type": "Feature", "properties": { "Name": "Debre Metmik" }, "geometry": { "type": "Point", "coordinates": [ 39.64, 9.94777778 ] } }
+{ "type": "Feature", "properties": { "X": 508978, "Y": 1694898, "name": "Dabra Bizan" }, "geometry": { "type": "Point", "coordinates": [ 39.08364036, 15.33063538 ] } },
+{ "type": "Feature", "properties": { "X": 496913, "Y": 1566712, "name": "Enda Abba Garima" }, "geometry": { "type": "Point", "coordinates": [ 38.97139286, 14.17166566 ] } },
+{ "type": "Feature", "properties": { "X": 532139, "Y": 1605328, "name": "Däbrä Libanos" }, "geometry": { "type": "Point", "coordinates": [ 39.29829135, 14.5206334 ] } },
+{ "type": "Feature", "properties": { "X": 531296, "Y": 1588943, "name": "Däbrä Damo" }, "geometry": { "type": "Point", "coordinates": [ 39.29027509, 14.37249753 ] } },
+{ "type": "Feature", "properties": { "X": 308813, "Y": 1317827, "name": "Narga Sellase" }, "geometry": { "type": "Point", "coordinates": [ 37.24451763, 11.91561134 ] } },
+{ "type": "Feature", "properties": { "X": 315886, "Y": 1315639, "name": "Daga Estifanos" }, "geometry": { "type": "Point", "coordinates": [ 37.30956418, 11.89623005 ] } },
+{ "type": "Feature", "properties": { "X": 312731, "Y": 1349378, "name": "Mändabba" }, "geometry": { "type": "Point", "coordinates": [ 37.27866309, 12.20103045 ] } },
+{ "type": "Feature", "properties": { "X": 335957, "Y": 1314223, "name": "Tana Qirqos" }, "geometry": { "type": "Point", "coordinates": [ 37.49386849, 11.88447265 ] } },
+{ "type": "Feature", "properties": { "X": 333713, "Y": 1309138, "name": "Rema Medhane Alem" }, "geometry": { "type": "Point", "coordinates": [ 37.47352635, 11.8383924 ] } },
+{ "type": "Feature", "properties": { "X": 402765, "Y": 1248141, "name": "Qoma Fasilädäs" }, "geometry": { "type": "Point", "coordinates": [ 38.10907953, 11.28952808 ] } },
+{ "type": "Feature", "properties": { "X": 409138, "Y": 1178549, "name": "Debre Work" }, "geometry": { "type": "Point", "coordinates": [ 38.1692282, 10.66037304 ] } },
+{ "type": "Feature", "properties": { "X": 414675, "Y": 1166136, "name": "Dima Giyorgis" }, "geometry": { "type": "Point", "coordinates": [ 38.22013516, 10.54824762 ] } },
+{ "type": "Feature", "properties": { "X": 334416, "Y": 1245894, "name": "Gong Tewodros" }, "geometry": { "type": "Point", "coordinates": [ 37.48305636, 11.26667133 ] } },
+{ "type": "Feature", "properties": { "X": 359277, "Y": 1237449, "name": "Däbrä Sellalo" }, "geometry": { "type": "Point", "coordinates": [ 37.71110752, 11.19139099 ] } },
+{ "type": "Feature", "properties": { "X": 426171, "Y": 1166745, "name": "Däbrä Ṣǝmmuna " }, "geometry": { "type": "Point", "coordinates": [ 38.32519039, 10.55399681 ] } },
+{ "type": "Feature", "properties": { "X": 390141, "Y": 1533214, "name": "Debre Abbay" }, "geometry": { "type": "Point", "coordinates": [ 37.98333333, 13.86666667 ] } },
+{ "type": "Feature", "properties": { "X": 483272, "Y": 1073568, "name": "Debre Libanos" }, "geometry": { "type": "Point", "coordinates": [ 38.8475, 9.71194444 ] } },
+{ "type": "Feature", "properties": { "X": 539265, "Y": 1273550, "name": "Debre Kerbe" }, "geometry": { "type": "Point", "coordinates": [ 39.3600672, 11.520433 ] } },
+{ "type": "Feature", "properties": { "X": 576122, "Y": 1253521, "name": "Debre Istifanos" }, "geometry": { "type": "Point", "coordinates": [ 39.6976, 11.3387 ] } },
+{ "type": "Feature", "properties": { "X": 570154, "Y": 1099706, "name": "Debre Metmik" }, "geometry": { "type": "Point", "coordinates": [ 39.64, 9.94777778 ] } }
 ]
 }
